@@ -1,0 +1,35 @@
+# Compiled Java bytecode
+*.class
+
+# Compiled Maven files
+target/
+
+# Maven Wrapper
+mvnw
+mvnw.cmd
+
+# IDE-specific files (Eclipse, IntelliJ IDEA, etc.)
+.classpath
+.project
+.settings/
+*.iml
+*.ipr
+*.iws
+
+# IDE-specific directories (Eclipse, IntelliJ IDEA, etc.)
+.idea/
+.vscode/
+
+# Spring Boot IDE-specific files
+.sts4-cache
+
+# Spring Boot generated files
+HELP.md
+
+# Spring Boot application properties
+application.properties
+application.yml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
