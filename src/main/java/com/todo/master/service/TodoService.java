@@ -1,6 +1,7 @@
 package com.todo.master.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.aspectj.weaver.patterns.ISignaturePattern;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +27,19 @@ public class TodoService {
 		}
 	}
 	
-	public GenericResponse<List<String>> getTodos(Long userId){
+	public GenericResponse<List<Todo>> getTodos(Long userId){
 		GenericResponse<List<Todo>> apiResponse = new GenericResponse<>();
 		try {
 			boolean isReqValidated = validateReq(userId);
 			if(isReqValidated) {
-				apiResponse.setObj(todoRepo.getByUserId(userId));
+				apiResponse.setObj(todoRepo.findByUserId(userId));
 				apiResponse.setMessage("Successfully got the todo's");
+				return apiResponse;
 			}else {
 				throw new NotAValidUserIdException(String.format("User id is incorret",userId));
 			}
 		}catch(Exception e) {
 			throw e;
 		}
-		return null;
 	}
 }

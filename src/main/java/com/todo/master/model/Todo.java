@@ -4,16 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Todo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
-	private String desc;
+	private String description;
 	private boolean done;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	public Long getId() {
 		return id;
 	}
@@ -26,11 +32,11 @@ public class Todo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public boolean isDone() {
 		return done;
@@ -38,4 +44,11 @@ public class Todo {
 	public void setDone(boolean done) {
 		this.done = done;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }
